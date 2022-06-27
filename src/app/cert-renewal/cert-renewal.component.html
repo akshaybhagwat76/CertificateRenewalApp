@@ -1,0 +1,47 @@
+<ngx-loading></ngx-loading>
+<h1 class="certFontDisplay">Cert Renewal</h1>
+<div class="form">
+    <div class="row">
+        <div class="col-sm">
+            <form class="form-group" [formGroup]="certForm" (ngSubmit)="updateCert()">
+                <label class="fontDisplay">
+                    Appliaction ID:
+                    <input type="text" formControlName="applicationId" class="form-control" style="width:500px"
+                        (change)="applicationIdOnChange()">
+                </label>
+
+                <label class="fontDisplay textDisplay">
+                    Environment:
+                    <select class="form-control" style="width:500px" formControlName="environmentName"
+                        (change)="applicationIdOnChange()">
+                        <option>Choose option</option>
+                        <option *ngFor="let env of environment" [ngValue]="environment">{{env}}</option>
+                    </select>
+                </label>
+
+                <label class="fontDisplay textDisplay">
+                    Appliaction Name:
+                    <input type="text" formControlName="applicationName" class="form-control" style="width:500px">
+                </label>
+
+                <label class="fontDisplay textDisplay">
+                    Entity ID:
+                    <input type="text" formControlName="entityId" class="form-control" style="width:500px">
+                </label>
+
+                <label class="fontDisplay textDisplay">
+                    Cert Expiry:
+                    <input type="text" class="form-control" formControlName="certExpiry" style="width:500px">
+                </label>
+            </form>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <button text="button" class="btn btn-primary mx-8 " (click)="updateCert()">Update Cert</button>
+                    <button text="button" class="btn btn-primary mx-8 float-right" (click)="revertCert()">Revert
+                        Cert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

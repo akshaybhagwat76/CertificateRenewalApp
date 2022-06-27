@@ -1,0 +1,31 @@
+.form {
+    background-color: rgb(210, 225, 248);
+    border: solid 1px #084977;
+    border-radius: 20px;
+    padding: 70px 90px 30px;
+    height: 900px;
+    margin-left: 80px;
+    margin-right: 80px;
+
+    ngb-alert {
+        position: relative;
+        display: block;
+        margin-top: 20px;
+    }
+}
+
+.fontDisplay{
+    font-weight:bold;
+}
+
+.textDisplay{
+    width: 510px;
+    padding-top: 30px;
+}
+.certFontDisplay{
+    padding-top: 10px;
+    padding-bottom: 40px;
+    position: inherit;
+    text-align: center;
+}
+
