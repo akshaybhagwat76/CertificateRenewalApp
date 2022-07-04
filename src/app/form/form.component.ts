@@ -46,14 +46,13 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.ifNoData = true;
-    debugger
     this.certHeaderForm = new FormGroup({
       applicationId: new FormControl('', Validators.required),
       environment: new FormControl('', Validators.required),
       numberProd: new FormControl(''),
       certExpiry: new FormControl(''),
     });
-    this.certHeaderForm.get("numberProd")?.valueChanges.subscribe(selectedValue => {
+    this.certHeaderForm.get("numberProd")?.valueChanges.subscribe((selectedValue :string)=> {
       if (event && this.certHeaderForm.value.environment !== 'Prod' &&this.isSelectedCertExpiry == 'Jan 20 2022') {
         this.isApplicationButtonEnable = true;
         document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
@@ -81,33 +80,13 @@ export class FormComponent implements OnInit {
   }
 
   applicationIdOnChange() {
-    debugger
     if (this.certHeaderForm.get('applicationId')?.value.length > 0 && this.certHeaderForm.get('environment')?.value.length > 0) {
       this.getCertDetails(this.certHeaderForm.get('applicationId')?.value)
     }
     else {
       this.applicationData = [];
     }
-    debugger;
-    // this.certHeaderForm.get('applicationId')?.valueChanges.subscribe((x) => {
-    //   this.appId = x;
-    //   if (this.certHeaderForm.touched || this.certHeaderForm.valid) {
-    //     this.toastr.error('please give valid information');
-    //   }
-    // });
-    //   if(!event.value.touched || !event.value.valid){
-    //     this.toastr.error("please give valid information");
-    // }
-    // this.getCertDetails(event.value);
   }
-
-  // Will be added when Environment is considered
-  // changeEnvironment(event: any){
-  //   this.evnSelected?.setValue(event.target.value, {
-
-  //   });
-  // }
-
   getCertDetails(applicationId?: string) {
     let filedata = new AppData(
       this.certHeaderForm.get('applicationId')?.value,
@@ -150,8 +129,6 @@ export class FormComponent implements OnInit {
     }
     this.certService.getCertDetails(filedata).subscribe(
       (data: any) => {
-        //this.certList = data;
-        console.log(data);
         if (data[0]?.id == 'izgkjfgafgsajfg') {
           this.certHeaderForm.patchValue({
             applicationName: data[0].name,
@@ -183,8 +160,6 @@ export class FormComponent implements OnInit {
 
     this.certService.updateCert(filedata).subscribe(
       (data: any) => {
-        //this.certList = data;
-        console.log(data);
         if (data[0]?.id == 'izgkjfgafgsajfg') {
           this.certHeaderForm.patchValue({
             applicationName: data[0].name,
@@ -208,8 +183,6 @@ export class FormComponent implements OnInit {
   }
 
   applicationCheckEvent(event: any) {
-    debugger;
-    console.log(event);
     if (event && this.certHeaderForm.value.environment !== 'Prod' && event.certExpiry != 'Jan 20 2022') {
       this.isApplicationButtonEnable = true;
       document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
@@ -240,18 +213,6 @@ export class FormComponent implements OnInit {
   }
 
   onChange(event: any, obj: any) {
-    debugger
-
-    // if (event && event.certExpiry != 'Jan 20 2022') {
-    //   this.isApplicationButtonEnable = true;
-    //   document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
-    // } else {
-    //   // this.isApplicationButtonEnable=false;
-
-    //   document.getElementById('btnUpdate')?.removeAttribute("disabled");
-    // }
-
-    console.log(event);
     if (event && this.certHeaderForm.value.environment !== 'Prod' && event.certExpiry != 'Jan 20 2022') {
       this.isApplicationButtonEnable = true;
       document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
@@ -300,7 +261,6 @@ export class FormComponent implements OnInit {
     this.certService.revertCert(filedata).subscribe(
       (data: any) => {
         //this.certList = data;
-        console.log(data);
         if (data[0]?.id == 'izgkjfgafgsajfg') {
           this.certHeaderForm.patchValue({
             applicationName: data[0].name,
