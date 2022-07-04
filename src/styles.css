@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import '~ngx-toastr/toastr.css';
+body {
+    font-family: "Open Sans", sans-serif;
+    background: #f6f9ff;
+    color: #444444;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (min-width: 1200px)
+{
+    .toggle-sidebar .sidebar {
+        left: -300px;
+    }
+}
+@media (min-width: 1200px)
+{
+    .toggle-sidebar #main, .toggle-sidebar #footer {
+        margin-left: 0;
+    }
+}
